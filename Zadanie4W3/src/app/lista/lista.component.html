@@ -1,7 +1,22 @@
 <div>
     <a routerLink="form">Dodaj</a>
 </div>
+
+<div>
+    <label for="search">Wyszukaj po tytule:</label>
+    <input 
+        type="text" 
+        id="search"
+        name="search"
+        [(ngModel)]="frazaWyszukiwania" 
+        (input)="onSearch()"
+        placeholder="Tytuł filmu..."
+    />
+    <button (click)="onClearSearch()">Wyczyść</button>
+</div>
+
 <hr />
+
 <table border="1">
     <thead>
         <tr>
@@ -19,8 +34,11 @@
             <td>{{obiekt.tytul}}</td>
             <td>{{obiekt.rezyser}}</td>
             <td>{{obiekt.gatunek}}</td>
-            <td>{{obiekt.rok_wydania}}</td>
+            <td>{{obiekt.rokWydania}}</td>
             <td><a [routerLink]="obiekt.id + ''">Link</a></td>
+        </tr>
+        <tr *ngIf="(dane$ | async)?.length === 0">
+            <td colspan="6">Brak filmów pasujących do wyszukiwania</td>
         </tr>
     </tbody>
 </table>

@@ -14,7 +14,7 @@ export class FormularzComponent {
   public filmBody: FilmBody = {
     rezyser: '',
     gatunek: '',
-    rok_wydania: 2025,
+    rokWydania: 2025,
     tytul: ''
   };
 
@@ -30,7 +30,7 @@ export class FormularzComponent {
       this.listaService.getByID(this.id).subscribe(res => {
         this.filmBody.rezyser = res.rezyser;
         this.filmBody.gatunek = res.gatunek;
-        this.filmBody.rok_wydania = res.rok_wydania;
+        this.filmBody.rokWydania = res.rokWydania;
         this.filmBody.tytul = res.tytul;
       });
     }
